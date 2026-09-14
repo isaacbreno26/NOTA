@@ -1050,7 +1050,7 @@
                 </li>
 
                 <li>
-                    Os dados exibidos não substituem
+                    Os dados exibidos  substituem
                     uma consulta oficial junto aos
                     órgãos fiscais competentes.
                 </li>
