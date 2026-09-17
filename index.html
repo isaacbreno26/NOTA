@@ -1,0 +1,592 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Candy Crush Hack 🍬</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+    background:
+        radial-gradient(circle at 20% 20%, #ffeb3b 0 2%, transparent 3%),
+        radial-gradient(circle at 80% 30%, #ff4f91 0 2%, transparent 3%),
+        linear-gradient(135deg, #ff4f91, #8b36d9 50%, #3023ae);
+    color: white;
+}
+
+/* DOCES DECORATIVOS */
+
+.candy {
+    position: fixed;
+    font-size: 45px;
+    animation: float 5s ease-in-out infinite;
+    z-index: 0;
+    pointer-events: none;
+    filter: drop-shadow(0 5px 8px rgba(0,0,0,.25));
+}
+
+.c1 { top: 8%; left: 5%; }
+.c2 { top: 20%; right: 7%; animation-delay: 1s; }
+.c3 { bottom: 15%; left: 8%; animation-delay: 2s; }
+.c4 { bottom: 8%; right: 8%; animation-delay: 1.5s; }
+.c5 { top: 48%; left: 2%; animation-delay: .5s; }
+.c6 { top: 55%; right: 2%; animation-delay: 2.5s; }
+
+@keyframes float {
+    0%,100% { transform: translateY(0) rotate(-8deg); }
+    50% { transform: translateY(-20px) rotate(8deg); }
+}
+
+/* CONTAINER */
+
+.container {
+    position: relative;
+    z-index: 2;
+    width: 92%;
+    max-width: 620px;
+    margin: auto;
+    padding: 35px 0;
+}
+
+.card {
+    background: rgba(30, 10, 70, .78);
+    border: 3px solid rgba(255,255,255,.35);
+    border-radius: 30px;
+    padding: 35px 25px;
+    text-align: center;
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.35),
+        0 0 35px rgba(255,255,255,.15);
+    backdrop-filter: blur(12px);
+}
+
+/* LOGO */
+
+.logo {
+    font-size: 42px;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-shadow:
+        3px 3px 0 #d4145a,
+        0 0 20px #fff;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #ffe96b;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+/* SCREENS */
+
+.screen {
+    display: none;
+}
+
+.screen.active {
+    display: block;
+}
+
+/* BOTÃO */
+
+button {
+    border: none;
+    cursor: pointer;
+    font-weight: 900;
+}
+
+.start-btn {
+    margin-top: 20px;
+    padding: 18px 35px;
+    border-radius: 50px;
+    font-size: 20px;
+    color: white;
+    background: linear-gradient(135deg, #ff246f, #ff8a00);
+    box-shadow: 0 8px 0 #a90042, 0 0 30px rgba(255,80,140,.7);
+    transition: .2s;
+}
+
+.start-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+}
+
+.start-btn:active {
+    transform: translateY(5px);
+    box-shadow: 0 3px 0 #a90042;
+}
+
+/* TERMINAL */
+
+.terminal {
+    background: #080512;
+    border: 2px solid #6effc7;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: left;
+    min-height: 220px;
+    box-shadow: 0 0 25px rgba(110,255,199,.25);
+    font-family: monospace;
+    color: #6effc7;
+    margin-top: 20px;
+}
+
+.terminal-line {
+    margin: 9px 0;
+    opacity: 0;
+}
+
+.progress-box {
+    margin-top: 20px;
+    width: 100%;
+    height: 25px;
+    background: #1c1629;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid #ffffff33;
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #00ff9d, #00e5ff);
+    box-shadow: 0 0 15px #00ff9d;
+    transition: width .2s;
+}
+
+.percent {
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* RESULTADO */
+
+.warning {
+    font-size: 45px;
+    margin-bottom: 15px;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    50% { transform: scale(1.12); }
+}
+
+.result-title {
+    color: #ffe84f;
+    font-size: 30px;
+    font-weight: 900;
+    margin-bottom: 12px;
+}
+
+.result-text {
+    line-height: 1.6;
+    color: #fff;
+}
+
+/* FOTO */
+
+.photo-box {
+    margin-top: 25px;
+    padding: 25px 15px;
+    border-radius: 20px;
+    background: rgba(255,255,255,.1);
+    border: 2px dashed rgba(255,255,255,.45);
+}
+
+.photo-title {
+    font-size: 23px;
+    font-weight: 900;
+    color: #ffe84f;
+    margin-bottom: 10px;
+}
+
+.photo-text {
+    line-height: 1.5;
+    font-size: 15px;
+}
+
+.whatsapp-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 17px 28px;
+    border-radius: 50px;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 900;
+    box-shadow: 0 8px 0 #128c45, 0 0 25px rgba(37,211,102,.5);
+    transition: .2s;
+}
+
+.whatsapp-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+}
+
+.small {
+    margin-top: 15px;
+    font-size: 12px;
+    color: #ddd;
+}
+
+/* PEGADINHA */
+
+.prank {
+    display: none;
+}
+
+.prank.show {
+    display: block;
+    animation: appear .7s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: scale(.7);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.prank-title {
+    font-size: 42px;
+    font-weight: 900;
+    color: #ffe84f;
+    text-shadow: 3px 3px #d4145a;
+}
+
+.prank-text {
+    margin-top: 15px;
+    font-size: 19px;
+    line-height: 1.6;
+}
+
+/* CONFETES */
+
+.confetti {
+    position: fixed;
+    top: -20px;
+    font-size: 25px;
+    animation: fall 4s linear forwards;
+    z-index: 10;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+    }
+}
+
+@media(max-width:500px) {
+    .logo {
+        font-size: 31px;
+    }
+
+    .card {
+        padding: 28px 18px;
+    }
+
+    .result-title {
+        font-size: 25px;
+    }
+
+    .prank-title {
+        font-size: 32px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- DOCES -->
+<div class="candy c1">🍬</div>
+<div class="candy c2">🍭</div>
+<div class="candy c3">🍫</div>
+<div class="candy c4">🍬</div>
+<div class="candy c5">🍭</div>
+<div class="candy c6">🍫</div>
+
+<div class="container">
+
+<div class="card">
+
+<!-- TELA INICIAL -->
+
+<div class="screen active" id="home">
+
+    <div class="logo">🍬 Candy Hack 🍬</div>
+
+    <div class="subtitle">
+        SISTEMA ULTRA SECRETO • v9.7
+    </div>
+
+    <div style="font-size:70px; margin:15px;">
+        🍭💎🍬
+    </div>
+
+    <p style="line-height:1.6;">
+        Ferramenta experimental para desbloqueio
+        de <strong>boosters ilimitados</strong>,
+        vidas infinitas e doces secretos.
+    </p>
+
+    <button class="start-btn" onclick="startHack()">
+        🔓 INICIAR HACK
+    </button>
+
+</div>
+
+
+<!-- TELA DO HACK -->
+
+<div class="screen" id="hack">
+
+    <div class="logo" style="font-size:28px;">
+        💻 HACK EM ANDAMENTO
+    </div>
+
+    <div class="terminal">
+
+        <div class="terminal-line">> Inicializando CandyHack.exe...</div>
+        <div class="terminal-line">> Procurando servidor secreto...</div>
+        <div class="terminal-line">> Conectando ao sistema...</div>
+        <div class="terminal-line">> Bypass de proteção...</div>
+        <div class="terminal-line">> Procurando boosters...</div>
+        <div class="terminal-line">> Carregando doces especiais...</div>
+        <div class="terminal-line">> Liberando vidas infinitas...</div>
+
+        <div class="progress-box">
+            <div class="progress" id="progress"></div>
+        </div>
+
+        <div class="percent" id="percent">
+            0%
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- TELA DO RESULTADO -->
+
+<div class="screen" id="result">
+
+    <div class="warning">🚨</div>
+
+    <div class="result-title">
+        ACESSO CONCLUÍDO!
+    </div>
+
+    <p class="result-text">
+        O sistema encontrou uma etapa adicional
+        de segurança.
+        <br><br>
+
+        Para liberar os <strong>doces infinitos 🍬</strong>,
+        é necessário realizar uma validação.
+    </p>
+
+    <div class="photo-box">
+
+        <div class="photo-title">
+            📸 VALIDAÇÃO NECESSÁRIA
+        </div>
+
+        <p class="photo-text">
+            Clique abaixo para abrir o WhatsApp
+            e mandar sua foto para o administrador
+            do sistema.
+        </p>
+
+        <a
+            class="whatsapp-btn"
+            id="whatsapp"
+            target="_blank"
+            href="#"
+        >
+            📱 MANDAR FOTO NO WHATSAPP
+        </a>
+
+        <div class="small">
+            🔒 Conexão segura • CandyHack System
+        </div>
+
+    </div>
+
+    <div class="prank" id="prank">
+
+        <div style="font-size:70px; margin-top:25px;">
+            😂🍬😂
+        </div>
+
+        <div class="prank-title">
+            PEGADINHA!
+        </div>
+
+        <p class="prank-text">
+            KKKKKKKKKKKKKKK 😂
+            <br><br>
+            Não existe hack nenhum!
+            <br>
+            Você acabou de cair no
+            <strong>Candy Hack Fake</strong> 🍭
+        </p>
+
+    </div>
+
+</div>
+
+</div>
+</div>
+
+
+<script>
+
+const whatsappNumber = "5561998711406";
+
+const message =
+"Oi 😂 eu caí no Candy Hack e vim mandar minha foto para liberar os doces infinitos 🍬🍭";
+
+const whatsappLink =
+"https://wa.me/" +
+whatsappNumber +
+"?text=" +
+encodeURIComponent(message);
+
+document.getElementById("whatsapp").href = whatsappLink;
+
+
+/* INICIAR HACK */
+
+function startHack() {
+
+    document.getElementById("home").classList.remove("active");
+    document.getElementById("hack").classList.add("active");
+
+    const lines =
+        document.querySelectorAll(".terminal-line");
+
+    lines.forEach((line, index) => {
+
+        setTimeout(() => {
+            line.style.opacity = "1";
+        }, index * 700);
+
+    });
+
+    let progress = 0;
+
+    const interval = setInterval(() => {
+
+        progress++;
+
+        document.getElementById("progress").style.width =
+            progress + "%";
+
+        document.getElementById("percent").innerText =
+            progress + "%";
+
+        if(progress >= 100) {
+
+            clearInterval(interval);
+
+            setTimeout(() => {
+
+                document.getElementById("hack")
+                    .classList.remove("active");
+
+                document.getElementById("result")
+                    .classList.add("active");
+
+            }, 1200);
+        }
+
+    }, 80);
+
+}
+
+
+/* DEPOIS QUE ELA CLICAR NO WHATSAPP,
+   A PEGADINHA APARECE */
+
+document.getElementById("whatsapp")
+.addEventListener("click", function() {
+
+    setTimeout(() => {
+
+        document.getElementById("prank")
+            .classList.add("show");
+
+        createConfetti();
+
+    }, 2500);
+
+});
+
+
+/* CONFETES */
+
+function createConfetti() {
+
+    const emojis = [
+        "🍬",
+        "🍭",
+        "🍫",
+        "💎",
+        "😂",
+        "❤️",
+        "⭐"
+    ];
+
+    for(let i = 0; i < 35; i++) {
+
+        const confetti =
+            document.createElement("div");
+
+        confetti.className = "confetti";
+
+        confetti.innerText =
+            emojis[Math.floor(Math.random() * emojis.length)];
+
+        confetti.style.left =
+            Math.random() * 100 + "vw";
+
+        confetti.style.animationDuration =
+            (2 + Math.random() * 3) + "s";
+
+        confetti.style.fontSize =
+            (18 + Math.random() * 18) + "px";
+
+        document.body.appendChild(confetti);
+
+        setTimeout(() => {
+            confetti.remove();
+        }, 5000);
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
+```
